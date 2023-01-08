@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisServe.Web", "TennisServe.Web\TennisServe.Web.csproj", "{1CA761AF-8498-4E78-82E5-CFC9BEF0A149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisServe.Database", "TennisServe.Database\TennisServe.Database.csproj", "{F71AACFE-B588-4B04-AF51-04B6FD3F17BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CA761AF-8498-4E78-82E5-CFC9BEF0A149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CA761AF-8498-4E78-82E5-CFC9BEF0A149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CA761AF-8498-4E78-82E5-CFC9BEF0A149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CA761AF-8498-4E78-82E5-CFC9BEF0A149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71AACFE-B588-4B04-AF51-04B6FD3F17BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71AACFE-B588-4B04-AF51-04B6FD3F17BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71AACFE-B588-4B04-AF51-04B6FD3F17BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71AACFE-B588-4B04-AF51-04B6FD3F17BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BFCBF8D-67D3-4F96-AF87-0B70F6CE20B5}
+	EndGlobalSection
+EndGlobal
