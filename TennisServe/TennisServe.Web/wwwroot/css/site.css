@@ -16,3 +16,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.border {
+    border: 1px solid black;
+    background-color:antiquewhite;
+}
+
+.serveIn {
+    background-color:aquamarine;
+}
+
+.serveOut {
+    background-color:brown;
+}

@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Names" class="control-label"></label>
-                <input asp-for="Names" class="form-control" />
+                <input asp-for="Names" class="form-control" id="namesId"/>
                 <span asp-validation-for="Names" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,23 +34,95 @@
             </div>
             <div class="form-group">
                 <label asp-for="Side" class="control-label"></label>
-                <input asp-for="Side" class="form-control" />
+                <input asp-for="Side" class="form-control" id="sideId"/>
                 <span asp-validation-for="Side" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
+            
+            <input asp-for="Position" class="form-control" id="positionId" hidden />
 
-        <div>
-            <img src="../imgs/tennis-court.PNG/" width="100" height="100" />
-        </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+            <div class="border w-100 d-flex flex-row" style="height: 8%">
+                <div class="border h-100 w-50"></div>
+                <div class="border h-100 w-50"></div>
+            </div>
+
+            <div class="border h-50 w-80 d-flex flex-row">
+                <div class="border h-100 w-25">
+                    <div class="h-50 w-100" id="left-side" align="center" style="padding: 20px";></div>
+                    <div class="h-50 w-100" id="right-side" align="center" style="padding: 20px" ;></div>
+                </div>
+                <div class="border h-100 w-25">
+                    <div class="border h-50 w-100"></div>
+                    <div class="border h-50 w-100"></div>
+                </div>
+                <div class="border h-100 w-25">
+                    <div class="border h-50 w-100" id="left">
+                        <div class="h-33 w-100" id="left-left" style="height: 33%"></div>
+                        <div class="h-33 w-100" id="left-center" style="height: 33%"></div>
+                        <div class="h-33 w-100" id="left-right" style="height: 33%"></div>
+                    </div>
+                    <div class="border h-50 w-100" id="right">
+                         <div class="h-33 w-100" id="right-left" style="height: 33%"></div>
+                        <div class="h-33 w-100" id="right-center" style="height: 33%"></div>
+                        <div class="h-33 w-100" id="right-right" style="height: 33%"></div>
+                    </div>
+                </div>
+                <div class="border h-100 w-25"></div>
+            </div>
+            
+            <div class="border w-100 d-flex flex-row" style="height: 8%">
+                <div class="border h-100 w-50"></div>
+                <div class="border h-100 w-50"></div>
+            </div>
     </div>
 </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script type="text/javascript">
+        
+        debugger;
+        
+         var servePosition = document.getElementById('positionId').value;
+         var name = document.getElementById('namesId').value;
+         var side = document.getElementById('sideId').value;
+
+         console.log(servePosition);
+         console.log(name);
+         console.log(side);
+
+         var id = '';
+         if (side == 'left')
+         {
+            id += 'right-';
+            document.getElementById('left-side').innerHTML = name;
+         }
+         else
+         {
+            id += 'left-';
+        document.getElementById('right-side').innerHTML = name;
+         }
+
+         if (servePosition != 'out')
+         {
+            id += servePosition;
+            document.getElementById(id).classList.add('serveIn');
+         }
+         else
+         {
+             document.getElementById(id + 'left').classList.add('serveOut');
+             document.getElementById(id + 'center').classList.add('serveOut');
+             document.getElementById(id + 'right').classList.add('serveOut');
+         }
+     
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

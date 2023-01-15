@@ -47,7 +47,13 @@ namespace TennisServe.Web.Controllers
             context.PredictedServes.Add(newRequestedServe);
             context.SaveChanges();
 
-            return View();
+            //ViewBag.PredictedServe = viewModel;
+
+            viewModel.Position = servePositionPrediction;
+            
+            ModelState.Clear();
+
+            return View(viewModel);
         }
 
         private async Task<string> GetServicePredict(PredictedServe newRequestedServe)

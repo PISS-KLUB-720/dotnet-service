@@ -11,5 +11,7 @@
         public string Points { get; set; }
 
         public string Side { get; set; }
+
+        public string Position { get; set; }
     }
 }

@@ -21,7 +21,5 @@ namespace TennisServe.Database
         public string Side { get; set; }
 
         public string Position { get; set; }
-
-        //public byte[] CourtImage { get; set; }
     }
 }
