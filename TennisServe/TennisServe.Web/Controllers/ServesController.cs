@@ -1,6 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Text;
 using TennisServe.Database;
 using TennisServe.Web.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TennisServe.Web.Controllers
 {
@@ -22,7 +29,7 @@ namespace TennisServe.Web.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult Predict(PointViewModel viewModel)
+        public async Task<IActionResult> Predict(PointViewModel viewModel)
         {
             var newRequestedServe = new PredictedServe
             {
@@ -32,16 +39,29 @@ namespace TennisServe.Web.Controllers
                 Side = viewModel.Side,
                 Games = viewModel.Games,
             };
+  
+            var servePositionPrediction = await GetServicePredict(newRequestedServe);
 
-            //api call
-            var result = "l";
-
-            newRequestedServe.Position = result;
+            newRequestedServe.Position = servePositionPrediction;
 
             context.PredictedServes.Add(newRequestedServe);
             context.SaveChanges();
 
             return View();
+        }
+
+        private async Task<string> GetServicePredict(PredictedServe newRequestedServe)
+        {
+            var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(newRequestedServe);
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("http://localhost:5002/player", httpContent);
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            var predictedServe = JsonConvert.DeserializeObject<PredictResponseModel>(responseBody);
+
+            return predictedServe.ServePosition;
         }
     }
 }
